@@ -11,5 +11,15 @@ export default function SingleBook() {
 
     })
 
-    return 
+    return (
+        <div>
+            <h1>{book.title}</h1>
+            <h2>{book.author}</h2>
+            <h4>Summary:</h4>
+            <p>{book.description}</p>
+            <p>Available:</p>
+            {book.available ? <p>yes</p> : <p>no</p>}
+            <img src={book.coverimage}/>
+        </div>
+    )
 }
