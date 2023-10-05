@@ -12,7 +12,7 @@ const booksApi = createApi({
 
   endpoints: (builder) => ({
     getPosts: builder.query({
-      query: () => '/posts',
+      query: () => '/books', //books or get
     }),
   }),
 });
