@@ -4,7 +4,7 @@ const booksApi = createApi({
   reducerPath: 'booksApi',
 
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://fsa-book-buddy-b6e748d1380d.herokuapp.com/',
+    baseUrl: 'https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api',
 
     prepareHeaders: (headers) =>
       headers.set('Content-Type', 'application/json'),
