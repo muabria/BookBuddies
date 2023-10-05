@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import booksApi from './booksApi';
+import booksApi from '../api/booksApi';
 
 const store = configureStore({
   reducer: {
