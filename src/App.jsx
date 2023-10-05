@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import bookLogo from './assets/books.png';
 import Books from './components/Books';
-
+import SearchBar from './components/SearchBar';
 function App() {
   const [token, setToken] = useState(null);
 
   return (
     <>
+  <SearchBar/>
       <h1>
         <img id="logo-image" src={bookLogo} />
         Library App
