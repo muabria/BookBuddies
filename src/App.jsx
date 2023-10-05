@@ -11,7 +11,7 @@ function App() {
         <img id="logo-image" src={bookLogo} />
         Library App
       </h1>
-      <Book />
+      <Books />
 
       <p>
         Complete the React components needed to allow users to browse a library
