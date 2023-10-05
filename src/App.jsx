@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import bookLogo from './assets/books.png';
 import Books from './components/Books';
+import { Route, Routes } from 'react-router-dom';
+//import Register from './components/Register';
+import SingleBook from './components/SingleBook';
+//import Account from './components/Account';
 
 function App() {
   const [token, setToken] = useState(null);
@@ -11,8 +15,13 @@ function App() {
         <img id="logo-image" src={bookLogo} />
         Library App
       </h1>
-      <Books />
-
+      <Routes>
+        <Route path='/' element={<Books />}/>
+        {/* <Route path='/Register' element={<Register />} /> */}
+        {/* <Route path='/Account' element={<Account />} /> */}
+        <Route path='/:id' element={<SingleBook />} />
+      </Routes>
+      {/* <Books /> */}
       <p>
         Complete the React components needed to allow users to browse a library
         catalog, check out books, review their account, and return books that
