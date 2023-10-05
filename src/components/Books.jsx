@@ -2,11 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 
-import { useGetBooksQuery } from '../redux/booksApi';
+import { useGetBooksQuery } from '../api/booksApi';
 
 //todo add css
 
-function Books() {
+const Books = () => {
   // GOAL: useGetBooksQuery that gets the data, isLoading, error
   const { data, error, isLoading } = useGetBooksQuery();
 
@@ -31,6 +31,6 @@ function Books() {
         ))}
     </div>
   );
-}
+};
 
 export default Books;
