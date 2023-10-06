@@ -2,19 +2,30 @@ import { useState } from 'react';
 import bookLogo from './assets/books.png';
 import Books from './components/Books';
 import SearchBar from './components/SearchBar';
-function App() {
-  const [token, setToken] = useState(null);
+import { AppBar } from '@mui/material';
 
+function App() {
+const [token, setToken] = useState(null);
+
+//-----------------------Search-----------------------
+const [searchedBook, setSearchedBook] = useState(null);
+const handleSubmit = async (searchText) => {
+  console.log("Book Searched is " + searchText)
+  await //API (searchText);
+  setSearchedBook(searchText)
+}
   return (
     <>
-  <SearchBar/>
+    <AppBar>Place Holder Nav</AppBar>
       <h1>
         <img id="logo-image" src={bookLogo} />
         Library App
       </h1>
+      <SearchBar onSubmit={handleSubmit}/>
       <Books />
 
-      <p>
+      
+      {/*<p>
         Complete the React components needed to allow users to browse a library
         catalog, check out books, review their account, and return books that
         they've finished reading.
@@ -28,7 +39,7 @@ function App() {
       <p>
         Don't forget to set up React Router to navigate between the different
         views of your single page application!
-      </p>
+  </p>*/}
     </>
   );
 }
