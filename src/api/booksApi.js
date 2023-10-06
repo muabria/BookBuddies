@@ -25,4 +25,7 @@ const booksApi = createApi({
 
 export default booksApi;
 
-export const { useGetBooksQuery } = booksApi;
+export const { 
+  useGetBooksQuery,
+  useGetSingleBookQuery, 
+} = booksApi;
