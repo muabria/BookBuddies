@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import {useParams} from 'react-router-dom'
 
-const params = useParams();
 
-const booksApi = createApi({
+
+
+const singleBookApi = createApi({
   reducerPath: 'booksApi',
 
   baseQuery: fetchBaseQuery({
@@ -15,14 +15,11 @@ const booksApi = createApi({
 
   endpoints: (builder) => ({
     getBooks: builder.query({
-      query: () => '/api/books', //the end point
-    }),
-    getSingleBook: builder.query({
       query: () => `/api/books/${params.id}`, //the end point
     }),
   }),
 });
 
-export default booksApi;
+export default singleBookApi;
 
-export const { useGetBooksQuery } = booksApi;
+export const { useGetSingleBookQuery } = singleBookApi;
