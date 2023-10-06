@@ -1,16 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import booksApi from '../api/booksApi';
-import singleBookApi from '../api/singleBookApi';
+import api from './api';
+import authTokenSliceReucer from './authTokenSlice';
 
 const store = configureStore({
   reducer: {
-    [booksApi.reducerPath]: booksApi.reducer,
-    [singleBookApi.reducerPath]: singleBookApi.reducer,
+    [api.reducerPath]: api.reducer,
+    token: authTokenSliceReucer,
   },
 
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(booksApi.middleware);
+    return getDefaultMiddleware().concat(api.middleware);
   },
 });
 
