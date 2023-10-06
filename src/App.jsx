@@ -6,6 +6,8 @@ import { Route, Routes } from 'react-router-dom';
 import SingleBook from './components/SingleBook';
 //import Account from './components/Account';
 
+import SearchBar from './components/SearchBar';
+
 function App() {
   const [token, setToken] = useState(null);
 
