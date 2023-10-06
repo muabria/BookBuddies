@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 
-import { useGetBooksQuery } from '../api/booksApi';
+import { useGetBooksQuery } from '../redux/api';
 
 //todo add css
 
