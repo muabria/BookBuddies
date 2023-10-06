@@ -1,60 +1,63 @@
 /* TODO - add your code to create a functional React component that renders a registration form */
 
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Stack, Button, Paper, TextField } from '@mui/material';
+import { useRegisterMutation } from '../redux/api';
 
-import {
-  Stack,
-  Button,
-  Paper,
-  TextField,
-  Typography,
-  Link,
-} from '@mui/material';
-import { useRegisterMutation, useLoginMutation } from '../redux/api';
-
-const LoginForm = () => {
-  // TODO: call the mutation hook
+const RegisterForm = () => {
   const [register, result] = useRegisterMutation();
-  const [login] = useLoginMutation();
-
-  // should be either login or register, to match the API routes
-  const [type, setType] = useState('login');
-  const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
 
+  const resetForm = () => {
+    setFirstName('');
+    setLastName('');
+    setEmail('');
+    setPassword('');
+    setRepeatPassword('');
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (type === 'register') {
-      register({ user: { username, password } });
-    } else {
-      login({ user: { username, password } });
-    }
+    register({ user: { email, password } });
   };
   return (
     <Paper elevation={6} sx={{ width: '50%', padding: 4, margin: '14px auto' }}>
       <form onSubmit={handleSubmit}>
         <Stack direction="column">
-          <Typography variant="h5" sx={{ textAlign: 'center' }}>
-            {type === 'login' ? 'Log In' : 'Register'}
-          </Typography>
-          <TextField
-            label="Username"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-            sx={{ margin: '8px 0' }}
-          />
-          <TextField
-            label="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            sx={{ margin: '8px 0' }}
-            type="password"
-            helperText={
-              password && password.length < 8 ? 'Password too short' : null
-            }
-          />
-          {type === 'register' && (
+          <>
+            <TextField
+              label="First Name"
+              onChange={(e) => setFirstName(e.target.value)} // do i leave it out?
+              value={firstName}
+              sx={{ margin: '8px 0' }}
+            />
+            <TextField
+              label="Last Name"
+              onChange={(e) => setLastName(e.target.value)}
+              value={lastName}
+              sx={{ margin: '8px 0' }}
+            />
+            <TextField
+              label="Email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              sx={{ margin: '8px 0' }}
+            />
+            <TextField
+              label="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              sx={{ margin: '8px 0' }}
+              type="password"
+              helperText={
+                password && password.length < 8 ? 'Password too short' : null
+              }
+            />
             <TextField
               label="Re-Enter Password"
               onChange={(e) => setRepeatPassword(e.target.value)}
@@ -69,34 +72,25 @@ const LoginForm = () => {
                   : null
               }
             />
-          )}
+          </>
         </Stack>
         <Button
           variant="contained"
           size="large"
+          color="secondary"
           sx={{ margin: '8px 0', width: '100%' }}
           type="submit"
         >
-          {type === 'login' ? 'Log In' : 'Register'}
+          Register
         </Button>
-        {type === 'login' ? (
-          <Typography>
-            Need to create an account?{' '}
-            <Link href="#" onClick={() => setType('register')}>
-              Register
-            </Link>
-          </Typography>
-        ) : (
-          <Typography>
-            Already have an account?{' '}
-            <Link href="#" onClick={() => setType('login')}>
-              Log In
-            </Link>
-          </Typography>
-        )}
+        Already have an account? <Link to="/Login">Log In</Link>
+        <br />
+        <button type="button" onClick={resetForm}>
+          Reset
+        </button>
       </form>
     </Paper>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
