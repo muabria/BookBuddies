@@ -23,7 +23,7 @@ const RegisterForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    register({ user: { email, password } });
+    register({ firstName, lastName, email, password });
   };
   return (
     <Paper elevation={6} sx={{ width: '50%', padding: 4, margin: '14px auto' }}>

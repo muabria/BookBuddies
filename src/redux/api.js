@@ -21,20 +21,22 @@ const api = createApi({
 
     register: builder.mutation({
       query: (user) => ({
-        url: `api/users/register`, //register new user
+        url: `/api/users/register`, //register new user
         method: 'POST',
         body: user,
       }),
       transformResponse: (response) => response.data,
+      transformErrorResponse: (response) => response.error,
     }),
 
     login: builder.mutation({
       query: (user) => ({
-        url: `api/users/login`, //login existing user
+        url: `/api/users/login`, //login existing user
         method: 'POST',
         body: user,
       }),
       transformResponse: (response) => response.data,
+      transformErrorResponse: (response) => response.error,
     }),
   }),
 });

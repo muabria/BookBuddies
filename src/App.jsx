@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import bookLogo from './assets/books.png';
 import { Button } from '@mui/material';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { setToken } from './redux/authTokenSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import Books from './components/Books';
@@ -15,6 +15,15 @@ function App() {
   const token = useSelector((state) => state.token);
   console.log(token, 'This is the token');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/Register');
+    } else {
+      navigate('/Login');
+    }
+  }, [token]);
 
   return (
     <>
@@ -22,7 +31,6 @@ function App() {
         <img id="logo-image" src={bookLogo} />
         Library App
       </h1>
-      {token ? <LoginForm /> : <RegisterForm />}
       {token && (
         <Button onClick={() => dispatch(setToken({ token: null }))}>
           Logout

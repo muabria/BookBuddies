@@ -14,7 +14,6 @@ import { useLoginMutation } from '../redux/api';
 
 const LoginForm = () => {
   const [login] = useLoginMutation();
-  const [type, setType] = useState('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -33,7 +32,7 @@ const LoginForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    login({ user: { email, password } });
+    login({ email, password });
   };
 
   return (
@@ -71,7 +70,7 @@ const LoginForm = () => {
           Log in
         </Button>
         <Typography>
-          Need to create an account? <Link to="Register">Register</Link>
+          Need to create an account? <Link to="/Register">Register</Link>
         </Typography>
         <button type="button" onClick={resetForm}>
           Reset
