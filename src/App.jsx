@@ -36,7 +36,6 @@ function App() {
         {/* <Route path='/Account' element={<Account />} /> */}
         <Route path="/:id" element={<SingleBook />} />
       </Routes>
-      <Books />
     </>
   );
 }

@@ -19,6 +19,10 @@ const api = createApi({
       query: () => '/api/users/me', // get the user's account
     }),
 
+    getSingleBook: builder.query({
+      query: (id) => `/api/books/${id}`, //the end point
+    }),
+
     register: builder.mutation({
       query: (user) => ({
         url: `api/users/register`, //register new user
@@ -44,6 +48,7 @@ export default api;
 export const {
   useGetBooksQuery,
   useGetAccountQuery,
+  useGetSingleBookQuery,
   useRegisterMutation,
   useLoginMutation,
 } = api;
