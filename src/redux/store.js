@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import api from './api';
-import authTokenSliceReucer from './authTokenSlice';
+import authTokenReducer from './authTokenSlice';
 
 const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
-    token: authTokenSliceReucer,
+    token: authTokenReducer,
   },
 
   middleware: (getDefaultMiddleware) => {
