@@ -16,7 +16,10 @@ const api = createApi({
     }),
 
     getAccount: builder.query({
-      query: () => '/api/users/me', // get the user's account
+      query: (token) => ({
+        url: '/api/users/me', // get the user's account
+        headers: {'Authorization': `Bearer ${token}`},
+      }), 
     }),
 
     getSingleBook: builder.query({
