@@ -3,11 +3,14 @@
 //import { useEffect, useState } from 'react'
 import { useGetSingleBookQuery, useCheckoutMutation } from '../redux/api.js';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function SingleBook() {
     const params = useParams();
     const bookId = params.id;
     const [checkout] = useCheckoutMutation();
+    const token = useSelector((state) => state.token);
+    console.log('Token: ', token);
 
     const {data, error, isLoading} = useGetSingleBookQuery(bookId);
     console.log(data);
@@ -24,7 +27,7 @@ export default function SingleBook() {
         <div>
             <h1>{data.book.title}</h1>
             <h2>{data.book.author}</h2>
-            <button onClick={checkout(bookId)}>Check out</button>
+            <button onClick={checkout(bookId, token)}>Check out</button>
             <h4>Summary:</h4>
             <p>{data.book.description}</p>
             <h4>Available:</h4>

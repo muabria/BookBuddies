@@ -44,8 +44,11 @@ const api = createApi({
     }),
 
     checkout: builder.mutation({
-      query: (id) => ({
+      query: (id, token) => ({
         url: `/api/books/${id}`, //connect to single book
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
         method: 'PATCH',
         body: JSON.stringify({available: false})
       }),
@@ -54,8 +57,11 @@ const api = createApi({
     }),
 
     return: builder.mutation({
-      query: (id) => ({
+      query: (id, token) => ({
         url: `/api/books/${id}`, //connect to account
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
         method: 'PATCH',
         body: JSON.stringify({available: true})
       }),
