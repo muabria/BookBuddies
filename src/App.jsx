@@ -21,7 +21,7 @@ const handleSubmit = async (searchText) => {
         <img id="logo-image" src={bookLogo} />
         Library App
       </h1>
-      <SearchBar onSubmit={handleSubmit}/>
+      <SearchBar/>
       <Books />
 
       
