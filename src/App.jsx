@@ -8,6 +8,7 @@ import Books from './components/Books';
 import SingleBook from './components/SingleBook';
 //import Account from './components/Account';
 import SearchBar from './components/SearchBar';
+import { AppBar } from '@mui/material';
 import LoginForm from './components/Login';
 import RegisterForm from './components/Register';
 
@@ -25,12 +26,20 @@ function App() {
     }
   }, [token]);
 
+
+
   return (
     <>
+
+    <AppBar>Place Holder Nav</AppBar>
+
       <h1>
         <img id="logo-image" src={bookLogo} />
         Library App
       </h1>
+      <SearchBar/>
+      <Books />
+
       {token && (
         <Button onClick={() => dispatch(setToken({ token: null }))}>
           Logout
