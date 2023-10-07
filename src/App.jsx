@@ -12,6 +12,7 @@ import { AppBar } from '@mui/material';
 import LoginForm from './components/Login';
 import RegisterForm from './components/Register';
 
+import Navbar from './components/Navigations';
 function App() {
   const token = useSelector((state) => state.token);
   console.log(token, 'This is the token');
@@ -31,7 +32,9 @@ function App() {
   return (
     <>
 
-    <AppBar>Place Holder Nav</AppBar>
+      <AppBar> 
+        <Navbar/>
+      </AppBar>
 
       <h1>
         <img id="logo-image" src={bookLogo} />
