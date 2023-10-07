@@ -1,22 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import bookLogo from './assets/books.png';
+import { Button } from '@mui/material';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { setToken } from './redux/authTokenSlice';
+import { useSelector, useDispatch } from 'react-redux';
 import Books from './components/Books';
+import SingleBook from './components/SingleBook';
+//import Account from './components/Account';
 import SearchBar from './components/SearchBar';
 import { AppBar } from '@mui/material';
+import LoginForm from './components/Login';
+import RegisterForm from './components/Register';
 
 function App() {
-const [token, setToken] = useState(null);
+  const token = useSelector((state) => state.token);
+  console.log(token, 'This is the token');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-//-----------------------Search-----------------------
-const [searchedBook, setSearchedBook] = useState(null);
-const handleSubmit = async (searchText) => {
-  console.log("Book Searched is " + searchText)
-  await //API (searchText);
-  setSearchedBook(searchText)
-}
+  useEffect(() => {
+    if (!token) {
+      navigate('/Register');
+    } else {
+      navigate('/Login');
+    }
+  }, [token]);
+
+
+
   return (
     <>
+
     <AppBar>Place Holder Nav</AppBar>
+
       <h1>
         <img id="logo-image" src={bookLogo} />
         Library App
@@ -24,22 +40,19 @@ const handleSubmit = async (searchText) => {
       <SearchBar/>
       <Books />
 
-      
-      {/*<p>
-        Complete the React components needed to allow users to browse a library
-        catalog, check out books, review their account, and return books that
-        they've finished reading.
-      </p>
+      {token && (
+        <Button onClick={() => dispatch(setToken({ token: null }))}>
+          Logout
+        </Button>
+      )}
 
-      <p>
-        You may need to use the `token` in this top-level component in other
-        components that need to know if a user has logged in or not.
-      </p>
-
-      <p>
-        Don't forget to set up React Router to navigate between the different
-        views of your single page application!
-  </p>*/}
+      <Routes>
+        <Route path="/" element={<Books />} />
+        <Route path="/Register" element={<RegisterForm />} />
+        <Route path="/Login" element={<LoginForm />} />
+        {/* <Route path='/Account' element={<Account />} /> */}
+        <Route path="/:id" element={<SingleBook />} />
+      </Routes>
     </>
   );
 }
