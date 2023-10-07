@@ -19,8 +19,8 @@ const api = createApi({
       query: (token) => ({
         url: '/api/users/me', // get the user's account
         headers: {
-          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
       }), 
     }),
