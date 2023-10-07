@@ -18,7 +18,10 @@ const api = createApi({
     getAccount: builder.query({
       query: (token) => ({
         url: '/api/users/me', // get the user's account
-        headers: {'Authorization': `Bearer ${token}`},
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
       }), 
     }),
 
