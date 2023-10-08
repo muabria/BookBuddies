@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Stack, Button, Paper, TextField } from '@mui/material';
 import { useRegisterMutation } from '../redux/api';
+import { useSelector } from 'react-redux';
 
 const RegisterForm = () => {
   const [register, result] = useRegisterMutation();
@@ -12,6 +13,7 @@ const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const token = useSelector((state) => state.token);
 
   const resetForm = () => {
     setFirstName('');
@@ -24,6 +26,7 @@ const RegisterForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     register({ firstName, lastName, email, password });
+    console.log(token);
   };
   return (
     <Paper elevation={6} sx={{ width: '50%', padding: 4, margin: '14px auto' }}>

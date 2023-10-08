@@ -6,8 +6,20 @@ const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://fsa-book-buddy-b6e748d1380d.herokuapp.com',
 
-    prepareHeaders: (headers) =>
-      headers.set('Content-Type', 'application/json'),
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().token
+  
+      // If we have a token set in state, let's assume that we should be passing it.
+      if (token) {
+        headers.set('Content-Type', 'application/json',
+        'authorization', `Bearer ${token}`)
+      }
+      else {
+        headers.set('Content-Type', 'application/json',)
+      }
+  
+      return headers
+    },
   }),
 
   endpoints: (builder) => ({
@@ -16,11 +28,8 @@ const api = createApi({
     }),
 
     getAccount: builder.query({
-      query: (token) => ({
+      query: () => ({
         url: '/api/users/me', // get the user's account
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
       }), 
     }),
 
