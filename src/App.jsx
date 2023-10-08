@@ -51,10 +51,6 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Books />} />
-        <Route path="/Register" element={<RegisterForm />} />
-        <Route path="/Login" element={<LoginForm />} />
-        {/* <Route path='/Account' element={<Account />} /> */}
-        <Route path="/:id" element={<SingleBook />} />
       </Routes>
     </>
   );
