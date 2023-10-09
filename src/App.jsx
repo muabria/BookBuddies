@@ -8,10 +8,11 @@ import Books from './components/Books';
 import SingleBook from './components/SingleBook';
 //import Account from './components/Account';
 import SearchBar from './components/SearchBar';
-import { AppBar } from '@mui/material';
+import { AppBar, Typography } from '@mui/material';
 import LoginForm from './components/Login';
 import RegisterForm from './components/Register';
 
+import Navbar from './components/Navigations';
 function App() {
   const token = useSelector((state) => state.token);
   console.log(token, 'This is the token');
@@ -31,13 +32,13 @@ function App() {
   return (
     <>
 
-    <AppBar>Place Holder Nav</AppBar>
+      <Navbar />
 
-      <h1>
+      <Typography variant="h3" textAlign="center" sx={{ my: 5 }}>
         <img id="logo-image" src={bookLogo} />
         Library App
-      </h1>
-      <SearchBar/>
+      </Typography>
+
       <Books />
 
       {token && (
@@ -47,12 +48,14 @@ function App() {
       )}
 
       <Routes>
+
         <Route path="/" element={<Books />} />
-        <Route path="/Register" element={<RegisterForm />} />
+        <Route path="/SingleBook" element={<SingleBook />} />
         <Route path="/Login" element={<LoginForm />} />
-        {/* <Route path='/Account' element={<Account />} /> */}
-        <Route path="/:id" element={<SingleBook />} />
+        <Route path="/register" element={<RegisterForm />} />
+
       </Routes>
+
     </>
   );
 }
