@@ -50,8 +50,15 @@ function App() {
       )}
 
       <Routes>
+
         <Route path="/" element={<Books />} />
+        <Route path="/SingleBook" element={<SingleBook />} />
+        <Route path="/Login" element={<LoginForm />} />
+        <Route path="/register" element={<RegisterForm />} />
+        
+        
       </Routes>
+
     </>
   );
 }
