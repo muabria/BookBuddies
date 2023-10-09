@@ -1,13 +1,18 @@
 /* TODO - add your code to create a functional React component that renders details for a single book. Fetch the book data from the provided API. You may consider conditionally rendering a 'Checkout' button for logged in users. */
 //import {useParams} from 'react-router-dom'
 //import { useEffect, useState } from 'react'
-import { useGetSingleBookQuery } from '../redux/api.js';
+import { useGetSingleBookQuery, useCheckoutMutation } from '../redux/api.js';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { Typography, Stack, Card, CardContent, Button, Fab, Box } from '@mui/material';
+
 
 export default function SingleBook() {
     const params = useParams();
     const bookId = params.id;
+    const [checkout] = useCheckoutMutation();
+    const token = useSelector((state) => state.token);
+    console.log('Token: ', token);
 
     const {data, error, isLoading} = useGetSingleBookQuery(bookId);
     console.log(data);
@@ -22,6 +27,7 @@ export default function SingleBook() {
 
     return (
         <div>
+
           <Card>
             <Typography variant="h3">{data.book.title}</Typography>
             <Typography varaint="h4">{data.book.author}</Typography>
