@@ -3,6 +3,7 @@
 //import { useEffect, useState } from 'react'
 import { useGetSingleBookQuery } from '../redux/api.js';
 import { useParams } from 'react-router-dom';
+import { Typography, Stack, Card, CardContent, Button, Fab, Box } from '@mui/material';
 
 export default function SingleBook() {
     const params = useParams();
@@ -21,13 +22,16 @@ export default function SingleBook() {
 
     return (
         <div>
-            <h1>{data.book.title}</h1>
-            <h2>{data.book.author}</h2>
-            <h4>Summary:</h4>
-            <p>{data.book.description}</p>
-            <h4>Available:</h4>
-            {data.book.available ? <p>yes</p> : <p>no</p>}
+          <Card>
+            <Typography variant="h3">{data.book.title}</Typography>
+            <Typography varaint="h4">{data.book.author}</Typography>
+            <Typography varaint="h5">Summary:</Typography>
+            <Typography varaint="p">{data.book.description}</Typography>
+            {book.available
+                  ? <Fab variant="extended" color="primary">Available</Fab>
+                  : <Fab variant="extended" disabled aria-label>Checked Out</Fab>}
             <img src={data.book.coverimage} alt={`${data.book.title}'s cover`} />
+            </Card>
         </div>
     )
 }

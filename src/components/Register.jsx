@@ -25,6 +25,7 @@ const RegisterForm = () => {
     event.preventDefault();
     register({ firstName, lastName, email, password });
   };
+
   return (
     <Paper elevation={6} sx={{ width: '50%', padding: 4, margin: '14px auto' }}>
       <form onSubmit={handleSubmit}>

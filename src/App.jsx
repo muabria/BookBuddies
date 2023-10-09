@@ -8,7 +8,7 @@ import Books from './components/Books';
 import SingleBook from './components/SingleBook';
 //import Account from './components/Account';
 import SearchBar from './components/SearchBar';
-import { AppBar } from '@mui/material';
+import { AppBar, Typography } from '@mui/material';
 import LoginForm from './components/Login';
 import RegisterForm from './components/Register';
 
@@ -32,15 +32,13 @@ function App() {
   return (
     <>
 
-      <AppBar> 
-        <Navbar/>
-      </AppBar>
+      <Navbar />
 
-      <h1>
+      <Typography variant="h3" textAlign="center" sx={{ my: 5 }}>
         <img id="logo-image" src={bookLogo} />
         Library App
-      </h1>
-      <SearchBar/>
+      </Typography>
+
       <Books />
 
       {token && (
@@ -55,8 +53,7 @@ function App() {
         <Route path="/SingleBook" element={<SingleBook />} />
         <Route path="/Login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
-        
-        
+
       </Routes>
 
     </>
