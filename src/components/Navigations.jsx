@@ -5,6 +5,7 @@ import LoginForm from "./Login";
 import SingleBook from "./SingleBook";
 import { AppBar, Button, Stack, Typography } from "@mui/material";
 import bookLogo from '../assets/books.png';
+import Books from "./Books";
 
 const Navbar = () => {
     return (
@@ -19,7 +20,7 @@ const Navbar = () => {
                         <Link to="/" >
                             <Button sx={{ color: "white" }}> Home </Button>
                         </Link>
-                        <Link to="/Register" >
+                        <Link to="/register" >
                             <Button sx={{ color: "white" }}>  Sign Up </Button>
                         </Link>
                         <Link to="/Login">
@@ -28,6 +29,12 @@ const Navbar = () => {
                     </div>
                 </Stack>
             </AppBar>
+        <Routes>
+            <Route path="/" element={<Books />} />
+        <Route path="/SingleBook" element={<SingleBook />} />
+        <Route path="/Login" element={<LoginForm />} />
+        <Route path="/register" element={<RegisterForm />} />
+        </Routes>
         </>
     )
 }

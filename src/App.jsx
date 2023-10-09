@@ -46,13 +46,13 @@ function App() {
           Logout
         </Button>
       )}
-      
+
       <Routes>
 
+
         <Route path="/" element={<Books />} />
+        <Route path="/SingleBook" element={<SingleBook />} />
         <Route path="/Login" element={<LoginForm />} />
-        <Route path='/Account' element={<Account />} />
-        <Route path="/:id" element={<SingleBook />} />
         <Route path="/register" element={<RegisterForm />} />
 
       </Routes>
