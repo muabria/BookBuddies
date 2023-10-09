@@ -1,4 +1,4 @@
-import { TextField, Button, Typography } from '@mui/material';
+import { TextField, Button, Typography, Card, Fab, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
 import { useGetBooksQuery } from '../redux/api';
@@ -21,6 +21,10 @@ const SearchBar = ({ onSubmit }) => {
     book.title.toLowerCase().includes(searchText.toLowerCase())
   );
   console.log(filteredBooks);
+
+  const clearForm = () => {
+    setShowBook(false) && setSearchText('')
+  }
 
   return (
     <>
@@ -47,10 +51,26 @@ const SearchBar = ({ onSubmit }) => {
       {showBook &&
         filteredBooks.map((book) => (
           <div key={book.id}>
-            <h3>
-              {book.title}
-              {book.description}
-            </h3>
+            <Card sx={{ maxWidth: 600, mx:50 ,my: 2, p: 3 }}>
+              <Stack direction="row" spacing={4}>
+                {book.available
+                  ? <Fab variant="extended" color="primary">Available</Fab>
+                  : <Fab variant="extended" disabled aria-label>Checked Out</Fab>}
+                <Typography variant="h3">
+                  {book.title}
+                </Typography>
+              </Stack>
+              <img src={book.coverimage} alt={book.title} height="140" width="100" />
+              <Typography>
+                {book.description}
+              </Typography>
+              <Button
+                variant='contained'
+                sx={{ my: 3 }}
+                onClick={clearForm}>
+                Close
+              </Button>
+            </Card>
           </div>
         ))}
     </>
