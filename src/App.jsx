@@ -6,7 +6,7 @@ import { setToken } from './redux/authTokenSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import Books from './components/Books';
 import SingleBook from './components/SingleBook';
-//import Account from './components/Account';
+import Account from './components/Account';
 import SearchBar from './components/SearchBar';
 import { AppBar, Typography } from '@mui/material';
 import LoginForm from './components/Login';
@@ -46,12 +46,13 @@ function App() {
           Logout
         </Button>
       )}
-
+      
       <Routes>
 
         <Route path="/" element={<Books />} />
-        <Route path="/SingleBook" element={<SingleBook />} />
         <Route path="/Login" element={<LoginForm />} />
+        <Route path='/Account' element={<Account />} />
+        <Route path="/:id" element={<SingleBook />} />
         <Route path="/register" element={<RegisterForm />} />
 
       </Routes>

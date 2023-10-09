@@ -11,11 +11,13 @@ import {
   styled,
 } from '@mui/material';
 import { useLoginMutation } from '../redux/api';
+import { useSelector } from 'react-redux';
 
 const LoginForm = () => {
   const [login] = useLoginMutation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const token = useSelector((state) => state.token);
 
   const resetForm = () => {
     setEmail('');
@@ -33,6 +35,7 @@ const LoginForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     login({ email, password });
+    console.log(token);
   };
 
   return (

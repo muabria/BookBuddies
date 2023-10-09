@@ -14,9 +14,7 @@ const authTokenSlice = createSlice({
     );
     builder.addMatcher(
       api.endpoints.login.matchFulfilled,
-      (state, { payload }) => {
-        return { token: payload.token };
-      }
+      (state, { payload }) => payload.token
     );
   },
 });
