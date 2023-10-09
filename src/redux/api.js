@@ -56,6 +56,22 @@ const api = createApi({
       transformResponse: (response) => response.data,
       transformErrorResponse: (response) => response.error,
     }),
+
+    checkout: builder.mutation({
+      query: (id) => ({
+        url: `/api/books/${id}`, //connect to single book
+      }),
+      transformResponse: (response) => response.data,
+      transformErrorResponse: (response) => response.error,
+    }),
+
+    return: builder.mutation({
+      query: (id) => ({
+        url: `/api/books/${id}`, //connect to account
+      }),
+      transformResponse: (response) => response.data,
+      transformErrorResponse: (response) => response.error,
+    }),
   }),
 });
 
@@ -67,4 +83,7 @@ export const {
   useGetSingleBookQuery,
   useRegisterMutation,
   useLoginMutation,
+  useCheckoutMutation,
+  useReturnMutation,
 } = api;
+
