@@ -27,7 +27,7 @@ export default function SingleBook() {
         <div>
             <h1>{data.book.title}</h1>
             <h2>{data.book.author}</h2>
-            <button onClick={checkout(bookId, token)}>Check out</button>
+            <button onClick={checkout(bookId)}>Check out</button>
             <h4>Summary:</h4>
             <p>{data.book.description}</p>
             <h4>Available:</h4>
