@@ -1,16 +1,17 @@
-# Block 30 - Book Buddy
+# Book Buddy
+
+View website - https://book-buddies.netlify.app/Register
 
 ## Introduction
 
 We are working with a new client who is wanting to design an online library for the public. Another Full Stack Solutions team has already built out the API, but we need your assistance in developing the front end to ensure on-time delivery to the client. When this is complete, please submit the link to the deployed application so I can share it with the client.
 
-Details on the API can be found 🔗 [here](#)
 
 ## Getting Started
 
 1. Fork this repo
 2. Clone your copy of the starter code
-3. `cd Unit4.BookBuddy.Starter`
+3. `cd BookBuddies`
 4. Install dependencies `npm install`
 5. Run the app with `npm run dev`
 
